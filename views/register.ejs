@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./layouts/header'); -%>
+
+<body>
+    <%- include('./layouts/navbar'); -%>
+
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('/assets/img/contact-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="page-heading">
+                        <h1>Register</h1>
+                        <span class="subheading">To write your desired blog</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content-->
+    <main class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <% if(errors) { %>
+                    <ul class="list-group">
+                        <% for(let i = 0; i < errors.length; i++) { %>
+                        <li class="list-group-item list-group-item-danger"><%= errors[i] %></li>
+                        <% }%>
+                    </ul>
+                    <% } %>
+                    <p>Register here!</p>
+                    <div class="my-5 mt-0">
+
+                        <form method="POST" action="/users/register" enctype="multipart/form-data">
+
+                            <div class="form-floating">
+                                <input class="form-control" id="username" type="text" placeholder="User name"
+                                    name="username" value="<%= username %>" />
+                                <label for="username">User name</label>
+                                <div class="invalid-feedback">A username is
+                                    required.</div>
+                            </div>
+
+                            <div class="form-floating">
+                                <input class="form-control" id="password" type="text" placeholder="Password"
+                                    name="password" value="<%= password %>" />
+                                <label for=" password">Password</label>
+                                <div class="invalid-feedback">A password is
+                                    required.</div>
+                            </div>
+
+                            <br />
+
+                            <!-- Submit Button-->
+                            <button class="btn btn-primary text-uppercase" id="register" type="submit">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <%- include('layouts/footer'); -%>
+
+    <%- include('layouts/scripts'); -%>
+
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+
+</html>

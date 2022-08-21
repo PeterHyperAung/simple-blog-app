@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./layouts/header'); -%>
+
+<body>
+
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url(/assets/img/logout.jpg);">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="page-heading">
+                        <h2>Are you sure you want to log out ?</h2>
+                        <div class="btn-group mt-5">
+                            <a href="/" class="btn-warning py-3 px-5 me-3">Cancel</a>
+                            <a href="/auth/logout" class="btn-danger  py-3 px-5">Log out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <%- include('layouts/footer'); -%>
+
+    <%- include('layouts/scripts'); -%>
+
+</body>
+
+</html>

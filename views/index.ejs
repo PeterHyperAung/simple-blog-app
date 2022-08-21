@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./layouts/header'); -%>
+
+<body>
+    <%- include('./layouts/navbar'); -%>
+
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1>Clean Blog</h1>
+                        <span class="subheading">Write your own desired blog</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content-->
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+
+                <!-- filter result -->
+                <form action="/" method="GET">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="title" name="title"
+                            placeholder="Enter the title which you want to filter..." minlength="5x" required />
+                        <button class="btn btn-outline-secondary" type="submit">Search Post →</button>
+                    </div>
+                </form>
+
+                <% if(blogposts.length === 0) { %>
+                <div class="alert alert-secondary mb-5 mt-3 text-center" role="alert">
+                    No blog post yet!
+                </div>
+                <% } %>
+                <!-- Post preview-->
+                <% for(let i = 0; i < blogposts.length; i++) { %>
+                <div class="post-preview">
+                    <a href="/post/<%= blogposts[i]._id %>">
+                        <h2 class="post-title">
+                            <%= blogposts[i].title %>
+                        </h2>
+                        <h4 class="post-subtitle">
+                            <% if(blogposts[i].text){%>
+                            <%= blogposts[i].text.slice(0, 30) + '...' %>
+                            <% } else{ %>
+                            <%= blogposts[i].content.slice(0, 35) + '...' %>
+                            <% }%>
+                        </h4>
+                    </a>
+
+                    <p class="post-meta">
+                        Posted by
+                        <a href="/"><%= blogposts[i].userId.username %></a>
+                        on
+                        <%= blogposts[i].datePosted.toDateString() %>
+                    </p>
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+                <% }; %>
+
+            </div>
+        </div>
+    </div>
+    <%- include('layouts/footer'); -%>
+
+    <%- include('layouts/scripts'); -%>
+</body>
+
+</html>

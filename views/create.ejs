@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./layouts/header'); -%>
+
+<body>
+    <%- include('./layouts/navbar'); -%>
+
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('/assets/img/about-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="page-heading">
+                        <h1>Create New Post</h1>
+                        <span class="subheading">And let the world see it</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content-->
+    <main class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <% if (error) { %>
+                    <% for(el of error){ %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= el %>
+                    </div>
+                    <% } %>
+                    <% } %>
+                    <h4 class="my-4">Write a new blog here!</h4>
+                    <div class="my-5 mt-0">
+
+                        <form method="POST" action="/posts/store" enctype="multipart/form-data">
+                            <div class="form-floating">
+                                <input class="form-control" id="title" type="text"
+                                    placeholder="Enter the blog's title..." name="title" value="<%= title %>" />
+                                <label for="title">Blog title</label>
+                            </div>
+                            <div class="form-group my-4">
+                                <label for="" class="d-block mb-3 text-muted">Blog Content Body</label>
+                                <textarea id="summernote" style="height: 12rem" name="content">
+                                    <%= content %>
+                                </textarea>
+                            </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Image</label>
+                        <input class="form-control" type="file" id="image" name="image">
+                    </div>
+                    <br />
+                    <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <%- include('layouts/footer'); -%>
+
+    <%- include('layouts/scripts'); -%>
+    <script>
+        $(document).ready(function (e) {
+            $("#summernote").summernote({
+                height: 200,
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']]
+                ],
+            });
+
+
+        });
+    </script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+</body>
+
+</html>
