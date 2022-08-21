@@ -11,9 +11,7 @@ module.exports = async (req, res) => {
 
   let blogposts = await BlogPost.find({ title: filter }).populate('userId');
   blogposts.map((el) => {
-    if (el.content[0] === '<') {
-      el.text = convert(el.content, { wordwrap: 130 });
-    }
+    el.text = convert(el.content, { wordwrap: 130 });
   });
   res.render('index', {
     blogposts,

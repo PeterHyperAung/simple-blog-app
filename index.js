@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
-const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const expressSession = require('express-session');
 const flash = require('connect-flash');
@@ -32,9 +31,8 @@ const authenticateMiddlware = require('./middleware/redirectIfAuthenticateMiddlw
 global.loggedIn = null;
 
 app.use(express.static('public'));
-// app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.use(fileUpload());
 app.use(flash());
 app.use(

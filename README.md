@@ -11,7 +11,6 @@ Hi! This application is developed and finished on 21<sup>st</sup> August 2022. I
 - MongoDB ( version - 5.0.9 )
 - Mongoose ( version - 6.5.2 )
 - bcrypt ( version - 5.0.1 )
-- body-parser ( version - 1.20.0 )
 - connect-flash ( version - 0.1.1 )
 - ejs ( version - 3.1.8 )
 - express-fileupload ( version - 1.4.0)

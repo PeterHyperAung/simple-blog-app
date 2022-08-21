@@ -16,11 +16,7 @@
                             <%= blogpost.title %>
                         </h1>
                         <h2 class="subheading">
-                            <% if(text){%>
                             <%= text.slice(0, 30) + '...' %>
-                            <% } else{ %>
-                            <%= blogpost.content.slice(0, 35) + '...' %>
-                            <% }%>
                         </h2>
                         <span class="meta">
                             Posted by

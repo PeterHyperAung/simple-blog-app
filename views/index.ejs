@@ -46,11 +46,7 @@
                             <%= blogposts[i].title %>
                         </h2>
                         <h4 class="post-subtitle">
-                            <% if(blogposts[i].text){%>
                             <%= blogposts[i].text.slice(0, 30) + '...' %>
-                            <% } else{ %>
-                            <%= blogposts[i].content.slice(0, 35) + '...' %>
-                            <% }%>
                         </h4>
                     </a>
 

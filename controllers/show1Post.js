@@ -5,10 +5,7 @@ module.exports = async (req, res) => {
   try {
     const blogpost = await BlogPost.findById(req.params.id).populate('userId');
     if (blogpost) {
-      let text;
-      if (blogpost.content[0] === '<') {
-        text = convert(blogpost.content, { wordwrap: 130 });
-      }
+      let text = convert(blogpost.content, { wordwrap: 130 });
       res.render('post', {
         blogpost,
         text,
